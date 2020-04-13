@@ -4,4 +4,4 @@ import androidx.recyclerview.widget.RecyclerView
 import com.artemissoftware.pokeapi.databinding.ItemPokemonBinding
 
 
-class PokemonViewHolder(val itemVehicleBinding: ItemPokemonBinding) : RecyclerView.ViewHolder(itemVehicleBinding.root)
+class PokemonViewHolder(val itemPokemonBinding: ItemPokemonBinding) : RecyclerView.ViewHolder(itemPokemonBinding.root)
