@@ -1,9 +1,12 @@
 package com.artemissoftware.pokeapi.di
 
+import androidx.lifecycle.MutableLiveData
 import com.artemissoftware.pokeapi.api.PokemonApi
+import com.artemissoftware.pokeapi.models.PokemonResult
 import com.artemissoftware.pokeapi.service.NetworkService
 import dagger.Module
 import dagger.Provides
+import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -20,6 +23,27 @@ class ApiModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create(PokemonApi::class.java)
+    }
+
+
+    @Provides
+    fun provideNetworkService(): NetworkService {
+        return NetworkService()
+    }
+
+    @Provides
+    fun provideCompositeDisposable(): CompositeDisposable {
+        return CompositeDisposable()
+    }
+
+    @Provides
+    fun provideLiveDataListOfPokemons(): MutableLiveData<List<PokemonResult>> {
+        return MutableLiveData()
+    }
+
+    @Provides
+    fun provideLiveDataBoolean(): MutableLiveData<Boolean> {
+        return MutableLiveData()
     }
 
 }

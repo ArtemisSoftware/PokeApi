@@ -1,6 +1,7 @@
 package com.artemissoftware.pokeapi.service
 
 import com.artemissoftware.pokeapi.api.PokemonApi
+import com.artemissoftware.pokeapi.di.DaggerApiComponent
 import com.artemissoftware.pokeapi.models.PokedexResult
 import io.reactivex.Single
 import javax.inject.Inject
