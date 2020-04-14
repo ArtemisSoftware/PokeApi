@@ -51,15 +51,24 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+            <com.sackcentury.shinebuttonlib.ShineButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:src="@android:color/darker_gray"
+                android:id="@+id/po_image2"
+                app:btn_color="@android:color/darker_gray"
+                app:btn_fill_color="@android:color/holo_green_dark"
+                app:allow_random_color="false"
+                app:siShape="@raw/smile"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
