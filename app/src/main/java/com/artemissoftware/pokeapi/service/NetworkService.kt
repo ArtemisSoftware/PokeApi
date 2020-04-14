@@ -11,7 +11,7 @@ class NetworkService {
     lateinit var pokemonApi: PokemonApi
 
     init {
-        //DaggerApiComponent.create().inject(this)
+        DaggerApiComponent.create().inject(this)
     }
 
     fun fetchPokedex(): Single<PokedexResult> {
