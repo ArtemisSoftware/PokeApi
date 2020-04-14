@@ -1,6 +1,7 @@
 package com.artemissoftware.pokeapi.di
 
 import androidx.lifecycle.MutableLiveData
+import com.artemissoftware.pokeapi.adapters.PokemonAdapter
 import com.artemissoftware.pokeapi.api.PokemonApi
 import com.artemissoftware.pokeapi.models.PokemonResult
 import com.artemissoftware.pokeapi.service.NetworkService
@@ -46,4 +47,14 @@ class ApiModule {
         return MutableLiveData()
     }
 
+
+    @Provides
+    fun providePokemonList(): ArrayList<PokemonResult> {
+        return ArrayList()
+    }
+
+    @Provides
+    fun providePokemonAdapter(pokemons: ArrayList<PokemonResult>): PokemonAdapter {
+        return PokemonAdapter(pokemons)
+    }
 }

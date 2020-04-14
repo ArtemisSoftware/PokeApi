@@ -29,6 +29,8 @@ class PokemonViewModel : ViewModel() {
     @Inject
     lateinit var isErrorMLD: MutableLiveData<Boolean>
 
+
+
     init {
         DaggerApiComponent.create().inject(this)
         fetchPokedex()
