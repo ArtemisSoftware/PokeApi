@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface PokemonApi {
 
-    @GET("pokemon/?offset=5&limit=5")
+    @GET("pokemon/?offset=1&limit=5")
     fun getPokedex(): Single<PokedexResult>
 
 }

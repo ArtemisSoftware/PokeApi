@@ -94,6 +94,10 @@ class MainActivity : AppCompatActivity() {
 
             val checked = (view as ShineButton).isChecked
         }
+
+        fun showPokemon(data: PokemonResult) {
+            val clickedItemCelsius = 1 + 1
+        }
     }
 
 }

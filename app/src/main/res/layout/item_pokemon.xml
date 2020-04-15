@@ -15,10 +15,17 @@
 
 
         <variable
-            name="listener"
+            name="shineButtonlistener"
             type="com.artemissoftware.pokeapi.MainActivity.ClickHandler"/>
 
+        <variable
+            name="itemListener"
+            type="com.artemissoftware.pokeapi.MainActivity.ClickHandler"/>
+
+
+
     </data>
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/vehicle_card_view"
@@ -26,7 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:elevation="8dp"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="@{view->itemListener.showPokemon(pokemon)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -65,7 +75,7 @@
             <com.sackcentury.shinebuttonlib.ShineButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -86,10 +96,7 @@
                 app:small_shine_color="#CC9999"
                 app:shine_count="15"
                 app:siShape="@raw/star"
-                android:onClick="@{view-> listener.onShineButtonClick(view)}"/>
-
-
-
+                android:onClick="@{view-> shineButtonlistener.onShineButtonClick(view)}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
