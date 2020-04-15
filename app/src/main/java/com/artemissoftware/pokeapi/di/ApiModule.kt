@@ -53,8 +53,10 @@ class ApiModule {
         return ArrayList()
     }
 
+    /*
     @Provides
     fun providePokemonAdapter(pokemons: ArrayList<PokemonResult>): PokemonAdapter {
         return PokemonAdapter(pokemons)
     }
+    */
 }

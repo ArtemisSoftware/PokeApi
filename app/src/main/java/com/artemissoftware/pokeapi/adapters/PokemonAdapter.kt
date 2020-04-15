@@ -10,9 +10,7 @@ import com.artemissoftware.pokeapi.databinding.ItemPokemonBinding
 import com.artemissoftware.pokeapi.models.PokemonResult
 
 
-
-
-class PokemonAdapter(private var registers: ArrayList<PokemonResult>) : RecyclerView.Adapter<PokemonViewHolder>() {
+class PokemonAdapter(private var registers: ArrayList<PokemonResult>, private var mListener: (PokemonResult) -> Unit) : RecyclerView.Adapter<PokemonViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
 
@@ -33,7 +31,10 @@ class PokemonAdapter(private var registers: ArrayList<PokemonResult>) : Recycler
         holder.itemPokemonBinding.pokemon = registers[position]
         holder.itemPokemonBinding.imageUrl = registers[position].imageUrl
         holder.itemPokemonBinding.shineButtonlistener = MainActivity.ClickHandler()
-        holder.itemPokemonBinding.itemListener = MainActivity.ClickHandler()
+
+        holder.itemView.setOnClickListener {
+            registers.get(position)?.let { it1 -> mListener.invoke(it1) }
+        }
     }
 
 

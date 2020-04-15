@@ -1,5 +1,6 @@
 package com.artemissoftware.pokeapi
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,7 +18,6 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    @Inject
     lateinit var pokemonAdapter: PokemonAdapter
 
     private val pokemonViewModel: PokemonViewModel by viewModels()
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         DaggerApiComponent.create().inject(this)
 
+        pokemonAdapter = PokemonAdapter(ArrayList() , { pokemon -> showPokemon(pokemon) })
 
         main_swipe_refresh_layout.setOnRefreshListener {
             main_swipe_refresh_layout.isRefreshing = false
@@ -89,15 +90,20 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    private fun showPokemon(data: PokemonResult) {
+
+        val intent = Intent(this, PokemonActivity::class.java)
+        startActivity(intent)
+    }
+
+
     class ClickHandler {
         fun onShineButtonClick(view: View) {
 
             val checked = (view as ShineButton).isChecked
         }
 
-        fun showPokemon(data: PokemonResult) {
-            val clickedItemCelsius = 1 + 1
-        }
+
     }
 
 }
