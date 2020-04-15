@@ -25,7 +25,9 @@ class PokemonAdapter(private var registers: ArrayList<PokemonResult>) : Recycler
 
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
+
         holder.itemPokemonBinding.pokemon = registers[position]
+        holder.itemPokemonBinding.imageUrl =registers[position].imageUrl
     }
 
 
