@@ -11,6 +11,7 @@ import com.artemissoftware.pokeapi.adapters.PokemonAdapter
 import com.artemissoftware.pokeapi.di.DaggerApiComponent
 import com.artemissoftware.pokeapi.models.PokemonResult
 import com.artemissoftware.pokeapi.viewmodel.PokemonViewModel
+import com.sackcentury.shinebuttonlib.ShineButton
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -85,6 +86,14 @@ class MainActivity : AppCompatActivity() {
         isErrorLD.observe(this, Observer { isError ->
             isError.let { pokemon_fetch_error.visibility = if (it) View.VISIBLE else View.GONE }
         })
+    }
+
+
+    class ClickHandler {
+        fun onShineButtonClick(view: View) {
+
+            val checked = (view as ShineButton).isChecked
+        }
     }
 
 }

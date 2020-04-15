@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.artemissoftware.pokeapi.MainActivity
 import com.artemissoftware.pokeapi.R
 import com.artemissoftware.pokeapi.databinding.ItemPokemonBinding
 import com.artemissoftware.pokeapi.models.PokemonResult
@@ -28,6 +29,7 @@ class PokemonAdapter(private var registers: ArrayList<PokemonResult>) : Recycler
 
         holder.itemPokemonBinding.pokemon = registers[position]
         holder.itemPokemonBinding.imageUrl =registers[position].imageUrl
+        holder.itemPokemonBinding.listener = MainActivity.ClickHandler()
     }
 
 
