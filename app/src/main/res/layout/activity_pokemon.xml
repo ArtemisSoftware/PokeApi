@@ -8,41 +8,152 @@
     android:fitsSystemWindows="true"
     tools:context=".PokemonActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+
+    <LinearLayout
+        android:id="@+id/id_Profile_RelativeLayout___"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_pokemon" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:contentDescription="For more ui/ux visit www.materialuiux.com"
+        android:orientation="vertical">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <RelativeLayout
+            android:id="@+id/id_Profile_RelativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="41dp">
+
+
+            <LinearLayout
+                android:id="@+id/id_ProfileImage_RelativeLayout"
+                android:layout_width="190dp"
+                android:layout_height="160dp"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+
+                <!--  Profile Image
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/id_Profile_Image"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/image"
+                    app:civ_border_color="#EEEEEE"
+                    app:civ_border_width="4dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_color="#f4f5f9"
+                    app:civ_shadow_radius="10" />
+-->
+
+
+            </LinearLayout>
+
+            <!-- User Name  android:textColor="@color/color_primary_text"-->
+
+            <TextView
+                android:id="@+id/id_fullName_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/id_ProfileImage_RelativeLayout"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="18dp"
+                android:text="Mohammed Alsudani"
+
+                android:textSize="20sp" />
+
+            <!--   tittle  android:textColor="@color/color_third_text" -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/id_fullName_TextView"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="Android Developer"
+
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!--
+
+            app:tabSelectedTextColor="@color/color_primary_text"
+            app:tabTextAppearance="@style/MyCustomTextAppearance"
+            app:tabTextColor="@color/color_secondary_text"
+        -->
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/sliding_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:tabBackground="@android:color/transparent"
+            app:tabIndicatorColor="#ff9e7f"
+            app:tabMode="fixed"
+            android:background="#00a294"   />
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/sliding_tabs">
+
+        </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
+
+
+
+   </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+   <!--
+   <androidx.coordinatorlayout.widget.CoordinatorLayout
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:fitsSystemWindows="true"
+       tools:context=".PokemonActivity">
+
+       <com.google.android.material.appbar.AppBarLayout
+           android:id="@+id/app_bar"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/app_bar_height"
+           android:fitsSystemWindows="true"
+           android:theme="@style/AppTheme.AppBarOverlay">
+
+           <com.google.android.material.appbar.CollapsingToolbarLayout
+               android:id="@+id/toolbar_layout"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:fitsSystemWindows="true"
+               app:contentScrim="?attr/colorPrimary"
+               app:layout_scrollFlags="scroll|exitUntilCollapsed"
+               app:toolbarId="@+id/toolbar">
+
+               <androidx.appcompat.widget.Toolbar
+                   android:id="@+id/toolbar"
+                   android:layout_width="match_parent"
+                   android:layout_height="?attr/actionBarSize"
+                   app:layout_collapseMode="pin"
+                   app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+           </com.google.android.material.appbar.CollapsingToolbarLayout>
+       </com.google.android.material.appbar.AppBarLayout>
+
+       <include layout="@layout/content_pokemon" />
+
+       <com.google.android.material.floatingactionbutton.FloatingActionButton
+           android:id="@+id/fab"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_margin="@dimen/fab_margin"
+           app:layout_anchor="@id/app_bar"
+           app:layout_anchorGravity="bottom|end"
+           app:srcCompat="@android:drawable/ic_dialog_email" />
+
+   </androidx.coordinatorlayout.widget.CoordinatorLayout>
+   -->
