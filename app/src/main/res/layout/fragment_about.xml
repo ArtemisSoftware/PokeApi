@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AboutFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--  UserName   -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="61dp">
+
+            <TextView
+                android:id="@+id/id_UsernmaeTitle_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/id_UsernmaeTitle_TextView"
+                android:layout_marginTop="16dp"
+                android:text="Mohammed Alsudane"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/id_usetname_EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:text="Edit"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <!--  Email   -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:id="@+id/id_EmailTitle_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/id_EmailTitle_TextView"
+                android:layout_marginTop="16dp"
+                android:text="materialuiux@gmail.com"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/id_editEmail_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:text="Edit"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <!--  Location   -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:id="@+id/id_LocationTitle_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/id_LocationTitle_TextView"
+                android:layout_marginTop="16dp"
+                android:text="Athens, Greece"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/id_editLocation_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:text="Edit"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <!--  Notification   -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:id="@+id/id_Usernmae_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Receive notifications"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/id_Usernmae_TextView"
+                android:layout_marginTop="16dp"
+                android:text="Enabled"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout>

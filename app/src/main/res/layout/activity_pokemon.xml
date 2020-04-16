@@ -86,7 +86,7 @@
         -->
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/sliding_tabs"
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             app:tabBackground="@android:color/transparent"
@@ -99,7 +99,7 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/sliding_tabs">
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout">
 
         </androidx.viewpager.widget.ViewPager>
     </LinearLayout>

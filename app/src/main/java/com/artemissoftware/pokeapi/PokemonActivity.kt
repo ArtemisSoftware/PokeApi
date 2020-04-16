@@ -3,9 +3,15 @@ package com.artemissoftware.pokeapi
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_pokemon.*
 
 class PokemonActivity : AppCompatActivity() {
+
+    var tabLayout: TabLayout? = null
+    var viewPager: ViewPager? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,5 +23,15 @@ class PokemonActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
         */
+
+        /*
+        viewPager = findViewById<ViewPager>(R.id.viewPager)
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(viewPagerAdapter);
+
+        tabLayout = findViewById<TabLayout>(R.id.tabLayout)
+        tabLayout.setupWithViewPager(viewPager);
+*/
+
     }
 }
