@@ -4,13 +4,14 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.artemissoftware.pokeapi.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_pokemon.*
 
 class PokemonActivity : AppCompatActivity() {
 
     var tabLayout: TabLayout? = null
-    var viewPager: ViewPager? = null
+    lateinit var viewPager:ViewPager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,14 +25,13 @@ class PokemonActivity : AppCompatActivity() {
         }
         */
 
-        /*
+
         viewPager = findViewById<ViewPager>(R.id.viewPager)
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.adapter = ViewPagerAdapter(getSupportFragmentManager());
 
         tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        tabLayout.setupWithViewPager(viewPager);
-*/
+        tabLayout?.setupWithViewPager(viewPager,true);
+
 
     }
 }

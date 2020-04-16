@@ -6,25 +6,38 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.artemissoftware.pokeapi.fragments.AboutFragment
 
-class ViewPagerAdapter (private val myContext: Context, fm: FragmentManager, internal var totalTabs: Int) : FragmentPagerAdapter(fm) {
+class ViewPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+
+    val fragmentList:MutableList<Fragment> = ArrayList<Fragment>()
+
+    val fragmentTitleList:MutableList<String> = ArrayList<String>()
+
+    init {
+        addFragment(AboutFragment(),"About")
+        //addFragment(AboutFragment(),"Personal Notes")
+    }
 
 
     override fun getItem(position: Int): Fragment {
+        return fragmentList.get(position)
+    }
 
-        var fragment: Fragment= AboutFragment()
 
-        when (position) {
-            0 -> fragment = AboutFragment()
-            //else -> return AboutFragment()
-        }
-
-        return fragment
+    override fun getPageTitle(position: Int): CharSequence? {
+        return fragmentTitleList.get(position)
     }
 
 
 
     // this counts total number of tabs
     override fun getCount(): Int {
-        return totalTabs
+        return return fragmentList.size
+    }
+
+
+    private fun addFragment(fragment:Fragment,title:String){
+        fragmentList.add(fragment)
+        fragmentTitleList.add(title)
+
     }
 }
