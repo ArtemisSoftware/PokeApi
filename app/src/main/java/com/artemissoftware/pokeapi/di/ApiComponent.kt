@@ -1,6 +1,7 @@
 package com.artemissoftware.pokeapi.di
 
 import com.artemissoftware.pokeapi.MainActivity
+import com.artemissoftware.pokeapi.PokemonActivity
 import com.artemissoftware.pokeapi.service.NetworkService
 import com.artemissoftware.pokeapi.viewmodel.PokemonViewModel
 import dagger.Component
@@ -13,4 +14,6 @@ interface ApiComponent {
     fun inject(pokemonViewModel: PokemonViewModel)
 
     fun inject(mainActivity: MainActivity)
+
+    fun inject(pokemonActivity: PokemonActivity)
 }

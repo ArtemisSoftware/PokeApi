@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         observeLiveData()
 
+        pokemonViewModel.refresh()
     }
 
     private fun observeLiveData() {
@@ -54,9 +55,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun observePokemonList() {
 
-        val vehicleListLD: LiveData<List<PokemonResult>> = pokemonViewModel.pokemonListMLD
+        val pokemonListLD: LiveData<List<PokemonResult>> = pokemonViewModel.pokemonListMLD
 
-        vehicleListLD.observe(this, Observer { pokedex ->
+        pokemonListLD.observe(this, Observer { pokedex ->
             pokedex.let {
                 main_recycler_view.visibility = View.VISIBLE
                 pokemonAdapter.setUpPokedex(it)

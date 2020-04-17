@@ -9,6 +9,9 @@
     tools:context=".PokemonActivity">
 
 
+
+
+
     <LinearLayout
         android:id="@+id/id_Profile_RelativeLayout___"
         android:layout_width="match_parent"
@@ -17,72 +20,59 @@
         android:orientation="vertical">
 
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/id_Profile_RelativeLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="41dp">
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!--  Profile Image -->
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/crl_img_profile"
+                android:layout_width="270dp"
+                android:layout_height="270dp"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_marginTop="18dp"
+                app:civ_border_color="#3f51b5"
+                app:civ_border_width="4dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="#3f51b5"/>
 
 
-            <LinearLayout
-                android:id="@+id/id_ProfileImage_RelativeLayout"
-                android:layout_width="190dp"
-                android:layout_height="160dp"
-                android:orientation="vertical"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
-
-                <!--  Profile Image
-
-                <com.mikhaellopez.circularimageview.CircularImageView
-                    android:id="@+id/id_Profile_Image"
-                    android:layout_width="170dp"
-                    android:layout_height="170dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/image"
-                    app:civ_border_color="#EEEEEE"
-                    app:civ_border_width="4dp"
-                    app:civ_shadow="true"
-                    app:civ_shadow_color="#f4f5f9"
-                    app:civ_shadow_radius="10" />
--->
-
-
-            </LinearLayout>
-
-            <!-- User Name  android:textColor="@color/color_primary_text"-->
+            <!-- User Name  -->
 
             <TextView
-                android:id="@+id/id_fullName_TextView"
+                android:id="@+id/txt_fullName"
+                android:textColor="@color/color_primary_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/id_ProfileImage_RelativeLayout"
+                android:layout_below="@+id/crl_img_profile"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="18dp"
                 android:text="Mohammed Alsudani"
 
                 android:textSize="20sp" />
 
-            <!--   tittle  android:textColor="@color/color_third_text" -->
+            <!--   tittle   -->
             <TextView
+                android:textColor="@color/color_third_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/id_fullName_TextView"
+                android:layout_below="@+id/txt_fullName"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="12dp"
                 android:text="Android Developer"
 
                 android:textSize="16sp" />
-        </RelativeLayout>
+        </LinearLayout>
 
         <!--
 
-            app:tabSelectedTextColor="@color/color_primary_text"
-            app:tabTextAppearance="@style/MyCustomTextAppearance"
-            app:tabTextColor="@color/color_secondary_text"
+
+
         -->
 
         <com.google.android.material.tabs.TabLayout
@@ -92,7 +82,9 @@
             app:tabBackground="@android:color/transparent"
             app:tabIndicatorColor="#ff9e7f"
             app:tabMode="fixed"
-            android:background="#00a294"   />
+            app:tabTextAppearance="@style/MyCustomTextAppearance"
+            app:tabSelectedTextColor="@color/color_primary_text"
+            app:tabTextColor="@color/color_secondary_text"   />
 
 
         <androidx.viewpager.widget.ViewPager
@@ -105,6 +97,27 @@
     </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+    <ProgressBar
+        android:id="@+id/pokemon_fetch_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/pokemon_fetch_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="No pokemons fetched!"
+        android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
 
    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

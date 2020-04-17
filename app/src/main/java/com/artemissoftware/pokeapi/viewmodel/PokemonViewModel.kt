@@ -33,7 +33,7 @@ class PokemonViewModel : ViewModel() {
 
     init {
         DaggerApiComponent.create().inject(this)
-        fetchPokedex()
+        //fetchPokedex()
     }
 
     override fun onCleared() {
@@ -54,19 +54,19 @@ class PokemonViewModel : ViewModel() {
                 .subscribeOn(Schedulers.io()) // Subscribes on a background thread, which is Schedulers.io()
                 .observeOn(AndroidSchedulers.mainThread()) // Displays the result on the main thread (UI thread)
                 .map { it.results } // Takes the list of pokemons in PokedexResult pass it on to the next operator
-                .subscribeWith(createPokemonObserver()) // The glue that connects networkService.fetchVehicle() with createVehicleObserver()
+                .subscribeWith(createPokedexObserver()) // The glue that connects networkService.fetchVehicle() with createVehicleObserver()
 
         )
     }
 
 
-    private fun createPokemonObserver(): DisposableSingleObserver<List<PokemonResult>> {
+    private fun createPokedexObserver(): DisposableSingleObserver<List<PokemonResult>> {
         return object : DisposableSingleObserver<List<PokemonResult>>() {
 
-            override fun onSuccess(vehicles: List<PokemonResult>) {
+            override fun onSuccess(pokemons: List<PokemonResult>) {
                 inProgressMLD.value = true
                 isErrorMLD.value = false
-                pokemonListMLD.value = vehicles
+                pokemonListMLD.value = pokemons
                 inProgressMLD.value = false
             }
 
@@ -80,5 +80,43 @@ class PokemonViewModel : ViewModel() {
     }
 
 
+
+    fun fetchPokemon(id : String) {
+
+        compositeDisposable.add( // API call get stored in compositeDisposable
+
+            networkService.fetchPokemon(id) // Makes the call to the endpoint
+                .subscribeOn(Schedulers.io()) // Subscribes on a background thread, which is Schedulers.io()
+                .observeOn(AndroidSchedulers.mainThread()) // Displays the result on the main thread (UI thread
+                .map {
+
+                    val list = listOf(it)
+                    return@map list
+
+                } // Takes the list of pokemons in PokedexResult pass it on to the next operator
+                .subscribeWith(createPokemonObserver()) // The glue that connects networkService.fetchVehicle() with createVehicleObserver()
+
+        )
+    }
+
+
+    private fun createPokemonObserver(): DisposableSingleObserver<List<PokemonResult>> {
+        return object : DisposableSingleObserver<List<PokemonResult>>() {
+
+            override fun onSuccess(pokemon: List<PokemonResult>) {
+                inProgressMLD.value = true
+                isErrorMLD.value = false
+                pokemonListMLD.value = pokemon
+                inProgressMLD.value = false
+            }
+
+            override fun onError(e: Throwable) {
+                inProgressMLD.value = true
+                isErrorMLD.value = true
+                Log.e("onError()", "Error: ${e.message}")
+                inProgressMLD.value = false
+            }
+        }
+    }
 
 }

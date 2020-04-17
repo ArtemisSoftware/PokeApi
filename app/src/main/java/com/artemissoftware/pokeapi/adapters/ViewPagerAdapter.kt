@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.artemissoftware.pokeapi.fragments.AboutFragment
+import com.artemissoftware.pokeapi.fragments.PersonalNotesFragment
 
 class ViewPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
@@ -14,7 +15,7 @@ class ViewPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm, Fragment
 
     init {
         addFragment(AboutFragment(),"About")
-        //addFragment(AboutFragment(),"Personal Notes")
+        addFragment(PersonalNotesFragment(),"Personal Notes")
     }
 
 
