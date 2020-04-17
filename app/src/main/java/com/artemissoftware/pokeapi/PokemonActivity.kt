@@ -79,6 +79,7 @@ class PokemonActivity : AppCompatActivity() {
             pokedex.let {
 
                 fillResult(it.get(0))
+                (viewPager.adapter as ViewPagerAdapter).updatePokemon(it.get(0))
             }
         })
     }

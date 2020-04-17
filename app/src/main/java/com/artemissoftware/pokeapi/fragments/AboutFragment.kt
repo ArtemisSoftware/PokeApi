@@ -7,8 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 
+import com.artemissoftware.pokeapi.models.PokemonResult
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.artemissoftware.pokeapi.R
+import com.artemissoftware.pokeapi.databinding.FragmentAboutBinding
+import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KProperty
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +31,12 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AboutFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AboutFragment : Fragment() {
+class AboutFragment : BaseFragment() {
+
+    private lateinit var pokemon: PokemonResult
+    private val binding by FragmentBinding<FragmentAboutBinding>(R.layout.fragment_about)
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,13 +50,34 @@ class AboutFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false)
+
+
+        return binding.root
+
+
+        //return inflater.inflate(R.layout.fragment_about, container, false)
     }
+
+
+    override fun getTitle() = "About"
+
+
+
+    fun updatePokemon(pokemon: PokemonResult){
+
+
+        binding.pokemon = pokemon
+    }
+
+
+
+
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
@@ -98,5 +132,25 @@ class AboutFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+
+
+
+    }
+
+
+    class FragmentBinding<out T : ViewDataBinding>(
+        @LayoutRes private val resId: Int
+    ) : ReadOnlyProperty<Fragment, T> {
+
+        private var binding: T? = null
+
+        override operator fun getValue(
+            thisRef: Fragment,
+            property: KProperty<*>
+        ): T = binding ?: createBinding(thisRef).also { binding = it }
+
+        private fun createBinding(
+            activity: Fragment
+        ): T = DataBindingUtil.inflate(LayoutInflater.from(activity.context),resId,null,true)
     }
 }
