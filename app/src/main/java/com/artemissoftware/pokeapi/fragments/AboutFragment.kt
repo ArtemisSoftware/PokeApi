@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.artemissoftware.pokeapi.R
 import com.artemissoftware.pokeapi.databinding.FragmentAboutBinding
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_about.*
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
@@ -65,13 +66,8 @@ class AboutFragment : BaseFragment() {
     fun updatePokemon(pokemon: PokemonResult){
         binding.pokemon = pokemon
 
-        var list = mutableListOf<String>()
-
-        pokemon.types.forEach { it ->
-            list.add(it.type.name)
-        }
-
-        tag_group.setTags(list)
+        Glide.with(this).load(pokemon.sprites.front_shiny).into(crl_img_sprite_front);
+        Glide.with(this).load(pokemon.sprites.back_shiny).into(crl_img_sprite_back);
     }
 
 

@@ -27,6 +27,33 @@
             android:layout_height="61dp">
 
             <TextView
+                android:id="@+id/txt_pokemon_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Id"
+                android:textSize="12sp"
+                android:textColor="@color/color_secondary_text" />
+
+
+            <TextView
+                android:text="@{pokemon.pokemonId, default=id}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_pokemon_id"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/color_primary_text" />
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_marginTop="18dp">
+
+            <TextView
                 android:id="@+id/txt_height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,7 +84,7 @@
                 android:id="@+id/txt_weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
+                android:text="Weight"
                 android:textSize="12sp"
                 android:textColor="@color/color_secondary_text" />
 
@@ -74,29 +101,76 @@
         </RelativeLayout>
 
 
-        <!--  Location   -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="61dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="18dp">
 
             <TextView
-                android:id="@+id/id_LocationTitle_TextView"
+                android:id="@+id/txt_sprites"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type"
+                android:text="Sprites"
                 android:textSize="12sp"
                 android:textColor="@color/color_secondary_text" />
 
 
-            <me.gujun.android.taggroup.TagGroup
-                android:id="@+id/tag_group"
-                style="@style/TagGroup"
-                android:layout_below="@+id/id_LocationTitle_TextView"
-                android:layout_marginTop="16dp"
-                app:atg_textSize="16dp"
-                app:atg_horizontalSpacing="10dp"
-                app:atg_borderColor="@color/color_primary_text"/>
+            <LinearLayout
+                android:id="@+id/lnr_lyt_sprite_front"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_below="@+id/txt_sprites"
+                android:gravity="center_horizontal">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/crl_img_sprite_front"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:civ_border_width="4dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_color="#3f51b5"
+                    app:civ_border_color="@color/imageBorderColor"/>
+
+
+
+                <TextView
+                    android:text="Front"
+                    android:maxLines="2"
+                    style="@style/miniTitle" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_below="@+id/txt_sprites"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/lnr_lyt_sprite_front">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/crl_img_sprite_back"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:civ_border_width="4dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_color="#3f51b5"
+                    app:civ_border_color="@color/imageBorderColor"/>
+
+
+
+                <TextView
+                    android:text="Back"
+                    android:maxLines="2"
+                    style="@style/miniTitle" />
+
+            </LinearLayout>
 
 
         </RelativeLayout>

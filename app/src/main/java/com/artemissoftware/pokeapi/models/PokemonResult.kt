@@ -4,7 +4,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
-data class PokemonResult (val name: String, val url: String, val id: String, val height: String, val weight: String, val types: List<PokemonType>){
+data class PokemonResult (var name: String, val url: String, val id: String, val height: String, val weight: String, val types: List<PokemonType>, val sprites: PokemonSprites){
 
     var imageUrl: String = ""
         get() {
@@ -27,6 +27,27 @@ data class PokemonResult (val name: String, val url: String, val id: String, val
         private set
 
 
+    var pokemonId: String = ""
+        get() {
+            if (field == null) {
+
+
+                if(id != null){
+                    pokemonId = id
+                }
+                else{
+
+                    val parts = url.split("/")
+                    pokemonId = parts[parts.size -2]
+                }
+            }
+            return field
+        }
+        private set
+
+
+
+
     companion object {
         @JvmStatic
         @BindingAdapter("android:src")
@@ -39,4 +60,6 @@ data class PokemonResult (val name: String, val url: String, val id: String, val
 
 data class PokemonType(val type : Type)
 data class Type(val name : String)
+data class PokemonSprites(val back_shiny : String, val front_shiny : String)
+
 

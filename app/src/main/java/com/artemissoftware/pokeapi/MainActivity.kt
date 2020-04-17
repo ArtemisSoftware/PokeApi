@@ -91,9 +91,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun showPokemon(data: PokemonResult) {
+    private fun showPokemon(pokemon: PokemonResult) {
 
         val intent = Intent(this, PokemonActivity::class.java)
+        intent.putExtra("id", pokemon.pokemonId)
         startActivity(intent)
     }
 

@@ -15,6 +15,8 @@ import com.artemissoftware.pokeapi.viewmodel.PokemonViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_pokemon.*
+import kotlinx.android.synthetic.main.activity_pokemon.tag_group
+import kotlinx.android.synthetic.main.fragment_about.*
 
 class PokemonActivity : AppCompatActivity() {
 
@@ -46,7 +48,12 @@ class PokemonActivity : AppCompatActivity() {
         tabLayout.setupWithViewPager(viewPager,true);
 
         observeLiveData()
-        pokemonViewModel.fetchPokemon("1")
+
+        var pokemonId = intent.extras?.getString("id")
+
+        if (pokemonId != null) {
+            pokemonViewModel.fetchPokemon(pokemonId)
+        }
     }
 
     private fun observeLiveData() {
@@ -96,6 +103,13 @@ class PokemonActivity : AppCompatActivity() {
     private fun fillResult(pokemon : PokemonResult){
 
         txt_fullName.text = pokemon.name
+        var list = mutableListOf<String>()
+
+        pokemon.types.forEach { it ->
+            list.add(it.type.name)
+        }
+
+        tag_group.setTags(list)
 
         Glide.with(this).load(pokemon.imageUrl).into(crl_img_profile);
     }
