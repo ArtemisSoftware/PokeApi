@@ -4,8 +4,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
-data class PokemonResult (val name: String, val url: String, val id: String){
-
+data class PokemonResult (val name: String, val url: String, val id: String, val height: String, val weight: String, val types: List<PokemonType>){
 
     var imageUrl: String = ""
         get() {
@@ -36,8 +35,8 @@ data class PokemonResult (val name: String, val url: String, val id: String){
             Glide.with(view.getContext()).load(url).into(view);
         }
     }
-
 }
 
-
+data class PokemonType(val type : Type)
+data class Type(val name : String)
 

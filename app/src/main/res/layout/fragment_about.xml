@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="pokemon"
             type="com.artemissoftware.pokeapi.models.PokemonResult" />
-
     </data>
 
 <FrameLayout
@@ -17,75 +16,61 @@
     tools:context=".fragments.AboutFragment">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
 
-        <!--  UserName   -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="61dp">
 
             <TextView
-                android:id="@+id/id_UsernmaeTitle_TextView"
+                android:id="@+id/txt_height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username"
-                android:textSize="12sp" />
+                android:text="Height"
+                android:textSize="12sp"
+                android:textColor="@color/color_secondary_text" />
 
 
             <TextView
-                android:text="@{pokemon.name, default=Name}"
+                android:text="@{pokemon.height, default=height}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/id_UsernmaeTitle_TextView"
+                android:layout_below="@+id/txt_height"
                 android:layout_marginTop="16dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/color_primary_text" />
 
-            <TextView
-                android:id="@+id/id_usetname_EditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:text="Edit"
-                android:textSize="14sp" />
         </RelativeLayout>
 
 
-        <!--  Email   -->
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="61dp"
             android:layout_marginTop="18dp">
 
             <TextView
-                android:id="@+id/id_EmailTitle_TextView"
+                android:id="@+id/txt_weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="@color/color_secondary_text" />
 
 
             <TextView
+                android:text="@{pokemon.weight, default=weight}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/id_EmailTitle_TextView"
+                android:layout_below="@+id/txt_weight"
                 android:layout_marginTop="16dp"
-                android:text="materialuiux@gmail.com"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/color_primary_text" />
 
-            <TextView
-                android:id="@+id/id_editEmail_TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:text="Edit"
-                android:textSize="14sp" />
         </RelativeLayout>
 
 
@@ -99,52 +84,24 @@
                 android:id="@+id/id_LocationTitle_TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location"
-                android:textSize="12sp" />
+                android:text="Type"
+                android:textSize="12sp"
+                android:textColor="@color/color_secondary_text" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <me.gujun.android.taggroup.TagGroup
+                android:id="@+id/tag_group"
+                style="@style/TagGroup"
                 android:layout_below="@+id/id_LocationTitle_TextView"
                 android:layout_marginTop="16dp"
-                android:text="Athens, Greece"
-                android:textSize="16sp" />
+                app:atg_textSize="16dp"
+                app:atg_horizontalSpacing="10dp"
+                app:atg_borderColor="@color/color_primary_text"/>
 
-            <TextView
-                android:id="@+id/id_editLocation_TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:text="Edit"
-                android:textSize="14sp" />
+
         </RelativeLayout>
 
 
-        <!--  Notification   -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:layout_marginTop="18dp">
-
-            <TextView
-                android:id="@+id/id_Usernmae_TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Receive notifications"
-                android:textSize="12sp" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/id_Usernmae_TextView"
-                android:layout_marginTop="16dp"
-                android:text="Enabled"
-                android:textSize="16sp" />
-
-        </RelativeLayout>
     </LinearLayout>
 </FrameLayout>
 

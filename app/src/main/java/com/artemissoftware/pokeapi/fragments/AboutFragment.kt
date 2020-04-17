@@ -14,8 +14,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.artemissoftware.pokeapi.R
 import com.artemissoftware.pokeapi.databinding.FragmentAboutBinding
+import kotlinx.android.synthetic.main.fragment_about.*
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
+
+
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,7 +36,6 @@ private const val ARG_PARAM2 = "param2"
  */
 class AboutFragment : BaseFragment() {
 
-    private lateinit var pokemon: PokemonResult
     private val binding by FragmentBinding<FragmentAboutBinding>(R.layout.fragment_about)
 
 
@@ -52,12 +54,7 @@ class AboutFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-
-
         return binding.root
-
-
-        //return inflater.inflate(R.layout.fragment_about, container, false)
     }
 
 
@@ -66,9 +63,15 @@ class AboutFragment : BaseFragment() {
 
 
     fun updatePokemon(pokemon: PokemonResult){
-
-
         binding.pokemon = pokemon
+
+        var list = mutableListOf<String>()
+
+        pokemon.types.forEach { it ->
+            list.add(it.type.name)
+        }
+
+        tag_group.setTags(list)
     }
 
 
