@@ -18,8 +18,6 @@
             name="shineButtonlistener"
             type="com.artemissoftware.pokeapi.MainActivity.ClickHandler"/>
 
-
-
     </data>
 
 
