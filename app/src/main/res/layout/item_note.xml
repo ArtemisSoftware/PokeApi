@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--
+
     <data>
 
         <variable
             name="note"
-            type="com.artemissoftware.pokeapi.models.PokemonResult" />
+            type="com.artemissoftware.pokeapi.models.Note" />
 
     </data>
--->
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/crd_item"
@@ -31,11 +31,11 @@
 
             <TextView
                 android:id="@+id/textView"
+                android:text="@{note.date, default=date}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:text="Read More"
                 android:textColor="#019AE8"
                 android:textSize="11sp"
                 android:textStyle="bold"
@@ -44,13 +44,13 @@
 
             <TextView
                 android:id="@+id/newsDetailTextView"
+                android:text="@{note.description, default=description}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="As far as trends go, you’d be forgiven for assuming that beige equals boring. "
                 android:textColor="@color/featuredNewsContentColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
