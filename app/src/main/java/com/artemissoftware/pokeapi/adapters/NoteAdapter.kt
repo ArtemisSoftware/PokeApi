@@ -31,7 +31,7 @@ class NoteAdapter(private var registers: ArrayList<Note>/*, private var mListene
     }
 
 
-    fun addRegistes(registes: List<Note>) {
+    fun addRegisters(registes: List<Note>) {
         registers.clear()
         registers.addAll(registes)
         notifyDataSetChanged()

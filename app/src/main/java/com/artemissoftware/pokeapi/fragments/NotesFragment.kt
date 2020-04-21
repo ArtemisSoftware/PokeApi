@@ -7,8 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.artemissoftware.pokeapi.R
+import com.artemissoftware.pokeapi.adapters.NoteAdapter
+import com.artemissoftware.pokeapi.models.Note
+import kotlinx.android.synthetic.main.fragment_notes.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,25 +35,40 @@ class NotesFragment : BaseFragment() {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
 
+
+    lateinit var noteAdapter: NoteAdapter
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        noteAdapter = NoteAdapter(ArrayList())
+
+        rcl_notes.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = noteAdapter
+        }
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_notes, container, false)
     }
 
-
-
     override fun getTitle() = "Personal Notes"
+
+
+    fun updateNotes(notes: List<Note>){
+        noteAdapter.addRegisters(notes)
+    }
+
+
 
 
 
