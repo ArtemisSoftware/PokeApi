@@ -5,6 +5,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.artemissoftware.pokeapi.fragments.AboutFragment
 import com.artemissoftware.pokeapi.fragments.BaseFragment
+import com.artemissoftware.pokeapi.fragments.NotesFragment
+import com.artemissoftware.pokeapi.models.Note
 import com.artemissoftware.pokeapi.models.PokemonResult
 
 class ViewPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
@@ -14,7 +16,7 @@ class ViewPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm, Fragment
 
     init {
         addFragment(AboutFragment())
-        //addFragment(PersonalNotesFragment(),"Personal Notes")
+        addFragment(NotesFragment())
     }
 
 
@@ -41,9 +43,10 @@ class ViewPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm, Fragment
 
 
     fun updatePokemon(pokemon : PokemonResult){
-
         (fragmentList.get(0) as AboutFragment).updatePokemon(pokemon)
-
     }
 
+    fun updateNotes(notes : List<Note>){
+        (fragmentList.get(1) as NotesFragment).updateNotes(notes)
+    }
 }

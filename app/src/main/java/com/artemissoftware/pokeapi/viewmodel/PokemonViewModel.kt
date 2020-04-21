@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.artemissoftware.pokeapi.di.DaggerApiComponent
+import com.artemissoftware.pokeapi.models.Note
 import com.artemissoftware.pokeapi.models.PokemonResult
 import com.artemissoftware.pokeapi.service.NetworkService
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,6 +23,10 @@ class PokemonViewModel : ViewModel() {
 
     @Inject
     lateinit var pokemonListMLD: MutableLiveData<List<PokemonResult>>
+
+    @Inject
+    lateinit var notesListMLD: MutableLiveData<List<Note>>
+
 
     @Inject
     lateinit var inProgressMLD: MutableLiveData<Boolean>
