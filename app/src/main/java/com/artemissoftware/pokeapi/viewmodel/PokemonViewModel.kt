@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.artemissoftware.pokeapi.di.DaggerApiComponent
 import com.artemissoftware.pokeapi.models.Note
 import com.artemissoftware.pokeapi.models.PokemonResult
+import com.artemissoftware.pokeapi.service.DataBaseService
 import com.artemissoftware.pokeapi.service.NetworkService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -17,6 +18,9 @@ class PokemonViewModel : ViewModel() {
 
     @Inject
     lateinit var networkService: NetworkService
+
+    @Inject
+    lateinit var dataBaseService: DataBaseService
 
     @Inject
     lateinit var compositeDisposable: CompositeDisposable
@@ -123,5 +127,41 @@ class PokemonViewModel : ViewModel() {
             }
         }
     }
+
+
+    private fun fetchNotes() {
+
+        compositeDisposable.add( // API call get stored in compositeDisposable
+
+            dataBaseService.getExampleNotes() // Makes the call to the endpoint
+                .subscribeOn(Schedulers.io()) // Subscribes on a background thread, which is Schedulers.io()
+                .observeOn(AndroidSchedulers.mainThread()) // Displays the result on the main thread (UI thread)
+                .subscribeWith(createNotesObserver()) // The glue that connects networkService.fetchVehicle() with createVehicleObserver()
+        )
+    }
+
+
+    private fun createNotesObserver(): DisposableSingleObserver<List<Note>> {
+        return object : DisposableSingleObserver<List<Note>>() {
+
+            override fun onSuccess(notes: List<Note>) {
+                inProgressMLD.value = true
+                isErrorMLD.value = false
+                notesListMLD.value = notes
+                inProgressMLD.value = false
+            }
+
+            override fun onError(e: Throwable) {
+                inProgressMLD.value = true
+                isErrorMLD.value = true
+                Log.e("onError()", "Error: ${e.message}")
+                inProgressMLD.value = false
+            }
+        }
+    }
+
+
+
+
 
 }

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artemissoftware.pokeapi.adapters.PokemonAdapter
 import com.artemissoftware.pokeapi.di.DaggerApiComponent
+import com.artemissoftware.pokeapi.models.Note
 import com.artemissoftware.pokeapi.models.PokemonResult
 import com.artemissoftware.pokeapi.viewmodel.PokemonViewModel
 import com.sackcentury.shinebuttonlib.ShineButton
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
 
 
     private fun observeInProgress() {

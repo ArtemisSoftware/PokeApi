@@ -10,11 +10,15 @@ import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import com.artemissoftware.pokeapi.adapters.ViewPagerAdapter
 import com.artemissoftware.pokeapi.di.DaggerApiComponent
+import com.artemissoftware.pokeapi.models.Note
 import com.artemissoftware.pokeapi.models.PokemonResult
 import com.artemissoftware.pokeapi.viewmodel.PokemonViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_pokemon.*
+import kotlinx.android.synthetic.main.activity_pokemon.pokemon_fetch_error
+import kotlinx.android.synthetic.main.activity_pokemon.pokemon_fetch_progress
 import kotlinx.android.synthetic.main.activity_pokemon.tag_group
 import kotlinx.android.synthetic.main.fragment_about.*
 
@@ -60,6 +64,7 @@ class PokemonActivity : AppCompatActivity() {
         observeInProgress()
         observeIsError()
         observePokemonList()
+        observeNotesList()
     }
 
     private fun observeInProgress() {
@@ -90,6 +95,22 @@ class PokemonActivity : AppCompatActivity() {
             }
         })
     }
+
+
+
+    private fun observeNotesList() {
+
+        val pokemonListLD: LiveData<List<Note>> = pokemonViewModel.notesListMLD
+
+        pokemonListLD.observe(this, Observer { notes ->
+            notes.let {
+
+                (viewPager.adapter as ViewPagerAdapter).updateNotes(it)
+            }
+        })
+    }
+
+
 
 
     private fun observeIsError() {

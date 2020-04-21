@@ -3,7 +3,9 @@ package com.artemissoftware.pokeapi.di
 import androidx.lifecycle.MutableLiveData
 import com.artemissoftware.pokeapi.adapters.PokemonAdapter
 import com.artemissoftware.pokeapi.api.PokemonApi
+import com.artemissoftware.pokeapi.models.Note
 import com.artemissoftware.pokeapi.models.PokemonResult
+import com.artemissoftware.pokeapi.service.DataBaseService
 import com.artemissoftware.pokeapi.service.NetworkService
 import dagger.Module
 import dagger.Provides
@@ -32,6 +34,13 @@ class ApiModule {
         return NetworkService()
     }
 
+
+    @Provides
+    fun provideDataBaseService(): DataBaseService {
+        return DataBaseService()
+    }
+
+
     @Provides
     fun provideCompositeDisposable(): CompositeDisposable {
         return CompositeDisposable()
@@ -44,6 +53,11 @@ class ApiModule {
 
     @Provides
     fun provideLiveDataBoolean(): MutableLiveData<Boolean> {
+        return MutableLiveData()
+    }
+
+    @Provides
+    fun provideLiveDataListOfNotes(): MutableLiveData<List<Note>> {
         return MutableLiveData()
     }
 
